@@ -8,13 +8,6 @@ import plotly.graph_objects as go
 from matplotlib import pyplot as plt
 from plotly.subplots import make_subplots
 
-# def predict_next_sn(last_three_sn, actual):
-#     print(f'last_three_sn: {last_three_sn}')
-#     print(f'actual: {actual}')
-#
-#     return (last_three_sn[2] - last_three_sn[1]) + (last_three_sn[1] - last_three_sn[0])
-
-
 PLOT_OR_PREDICT = 'predict'  # 'plot' or 'predict'
 
 
@@ -79,44 +72,11 @@ def plot_sequence_numbers(sn_list: List[int], predicted_sn_list: List[bool]):
 
 # Function to predict the next value in the sequence
 def predict_next_sn(last_sn, ):
-    # pred = model_sn.predict(np.array([[seq[0]], [seq[1]], [seq[2]]]))[0][0]
-    # pred = int(model_sn.predict(seq_number)[0][0])
-    # print(math.gcd(*last_3_sn))
-    print(f'last: {last_sn}')
-    # print(f'last_x: {last_x}')
-    # print(f'last_y: {last_y}')
-    # print(f'last_z: {last_z}')
-
-    # check if all elements in array are increasing
-    # print(f'all_increasing: {all_increasing}')
-    # seq(i) = 2seq(i-1) - seq(i-3) + 117124
-    # 2 seq(N - 1) - seq(N - 2) + 3
+    # print(f'last: {last_sn}')
     n = len(last_sn)
-    # diff_vector = last_sn[n - 1] - (2 * last_sn[n - 2] - last_sn[n - 3])
     predicted_4 = 2 * last_sn[n - 1] - last_sn[n - 2] + 29281
-    # predicted_3 = last_sn[1] + (last_sn[1] - last_sn[0])
     return ctypes.c_uint32(predicted_4).value
     # return predicted_4
-
-    error_3 = predicted_3 - last_sn[3]
-    predicted_4 = 2 * last_sn[3] - last_sn[1] + 117124
-    error_4 = predicted_4 - last_sn[4]
-    predicted_5 = 2 * last_sn[4] - last_sn[2] + 117124
-    # error_5 = predicted_5 - last_sn[5]
-    print("error 3 = ", error_3)
-    print("error 4 = ", error_4)
-    # print("error 5 = ", error_5)
-    return predicted_5
-    # else: cannot predict
-    return -999999999
-    # y_4 = y_3 * 2
-    # if last_sn[3] == y_3:
-    #     # then error would be the same
-    #     y_3
-    #     return y_4
-
-    # poly = np.polyfit(list(range(0, len(last_sn))), last_sn, deg=1)
-    # y_int = int(np.polyval(poly, len(last_sn)))
 
     # fig, ax = plt.subplots()
     # ax.plot(last_sn, label='last_sn')
@@ -216,8 +176,6 @@ if __name__ == '__main__':
         #
         # plt.legend()
         # plt.show()
-
-        # plotly_double_plot(seq_numbers, x, y, z)
 
         # Plot in each 2D combination
         fig, axes = plt.subplots(1, 3, figsize=(15, 5))
